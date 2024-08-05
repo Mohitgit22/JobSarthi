@@ -14,9 +14,21 @@ export const register = async (req, res) => {
                 success: false
             });
         };
-        const file = req.file;
-        const fileUri = getDataUri(file);
-        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+
+
+        let profilePhotoUrl = '';
+        if (req.file) {
+            const file = req.file;
+            const fileUri = getDataUri(file);
+
+            // Make sure fileUri.content is a base64 encoded string
+            const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+            profilePhotoUrl = cloudResponse.secure_url;
+        }
+
+        // const file = req.file;
+        // const fileUri = getDataUri(file);
+        // const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
         const user = await User.findOne({ email });
         if (user) {
@@ -34,7 +46,7 @@ export const register = async (req, res) => {
             password: hashedPassword,
             role,
             profile:{
-                profilePhoto:cloudResponse.secure_url,
+                profilePhoto:profilePhotoUrl,
             }
         });
 
