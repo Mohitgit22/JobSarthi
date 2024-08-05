@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
 const corsOptions = {
-    origin:'https://deploy-mern-frontend-inky.vercel.app/',
+    origin:'https://deploy-mern-frontend-inky.vercel.app',
     credentials:true
 }
 
