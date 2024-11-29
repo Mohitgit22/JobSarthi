@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import getDataUri from "../utils/datauri.js";
 import cloudinary from "../utils/cloudinary.js";
 
+
 export const register = async (req, res) => {
     try {
         const { fullname, email, phoneNumber, password, role } = req.body;
@@ -14,21 +15,9 @@ export const register = async (req, res) => {
                 success: false
             });
         };
-
-
-        let profilePhotoUrl = '';
-        if (req.file) {
-            const file = req.file;
-            const fileUri = getDataUri(file);
-
-            // Make sure fileUri.content is a base64 encoded string
-            const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
-            profilePhotoUrl = cloudResponse.secure_url;
-        }
-
-        // const file = req.file;
-        // const fileUri = getDataUri(file);
-        // const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+        const file = req.file;
+        const fileUri = getDataUri(file);
+        const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
         const user = await User.findOne({ email });
         if (user) {
@@ -46,7 +35,7 @@ export const register = async (req, res) => {
             password: hashedPassword,
             role,
             profile:{
-                profilePhoto:profilePhotoUrl,
+                profilePhoto:cloudResponse.secure_url,
             }
         });
 

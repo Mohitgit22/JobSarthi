@@ -17,14 +17,21 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
-const corsOptions = {
-    origin: 'https://deploy-mern-frontend-inky.vercel.app',
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-    optionsSuccessStatus: 200 // For legacy browser support
-  };
+// const corsOptions = {
+//   origin: ['https://deploy-mern-frontend-inky.vercel.app', 'http://localhost:5173'],
+//   methods: ["GET", "POST", "PUT", "DELETE"],
+//   credentials: true,
+//   optionsSuccessStatus: 200
+// };
 
-app.use(cors(corsOptions));
+
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // Specify your frontend URL
+//   res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials (cookies)
+//   next();
+// });
+
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 
