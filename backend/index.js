@@ -17,12 +17,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
-// const corsOptions = {
-//   origin: ['https://deploy-mern-frontend-inky.vercel.app', 'http://localhost:5173'],
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true,
-//   optionsSuccessStatus: 200
-// };
+
+
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
 
 
 // app.use((req, res, next) => {
