@@ -8,46 +8,51 @@ import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 
-
-dotenv.config({});
+// Load environment variables
+dotenv.config();
 
 const app = express();
 
-// middleware
+// Middleware setup
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// Define allowed origins for CORS
+const allowedOrigins = [
+  "https://deploy-mern-frontend-inky.vercel.app",
+];
 
 const corsOptions = {
-  origin:'deploy-mern-frontend-inky.vercel.app',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow the request
+    } else {
+      console.error(`Blocked by CORS: ${origin}`);
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true,
-  optionsSuccessStatus: 200
+  credentials: true, // Allow cookies and credentials
+  optionsSuccessStatus: 200, // For legacy browsers
 };
 
-
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // Specify your frontend URL
-//   res.header("Access-Control-Allow-Credentials", "true"); // Allow credentials (cookies)
-//   next();
-// });
-
-// Use CORS middleware
+// Apply CORS middleware
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Handle preflight requests
+// Handle preflight requests
+app.options("*", cors(corsOptions));
 
+// Define port
 const PORT = process.env.PORT || 3000;
 
-// api's
+// API routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
 
-
-
-app.listen(PORT,()=>{
-    connectDB();
-    console.log(`Server running at port ${PORT}`);
-})
+// Start the server
+app.listen(PORT, () => {
+  connectDB(); // Connect to the database
+  console.log(`Server running at port ${PORT}`);
+});
