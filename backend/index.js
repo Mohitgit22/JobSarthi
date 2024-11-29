@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin:'deploy-mern-frontend-inky.vercel.app',
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
   optionsSuccessStatus: 200
@@ -33,7 +33,9 @@ const corsOptions = {
 //   next();
 // });
 
-app.use(cors());
+// Use CORS middleware
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Handle preflight requests
 
 const PORT = process.env.PORT || 3000;
 
