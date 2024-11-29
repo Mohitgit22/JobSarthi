@@ -19,20 +19,37 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 
-// Allow all origins (not recommended for production)
+// Define allowed origins
+const allowedOrigins = [
+  "https://deploy-mern-frontend-inky.vercel.app", // Frontend in production
+  "http://localhost:5173", // Frontend in local development
+];
+
+// Configure CORS options
 const corsOptions = {
-  origin: "*", // Allow any domain
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true, // Allow cookies and credentials
-  optionsSuccessStatus: 200, // For legacy browsers
+  origin: (origin, callback) => {
+    // Allow requests with no origin (e.g., mobile apps or Postman)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 };
 
-// Apply CORS middleware
+// Use CORS middleware
 app.use(cors(corsOptions));
-// Handle preflight requests automatically
-app.options("*", cors(corsOptions));
+app.options("*", cors(corsOptions)); // Handle preflight requests;
 
-
+;app.use(function (req, res, next) {
+  //Enabling CORS
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,  Accept, x-client-key, x-client-token, x-client-secret, Authorization");
+    next();
+  });
 
 
 // Define port
