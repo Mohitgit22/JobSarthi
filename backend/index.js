@@ -18,20 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Define allowed origins for CORS
-const allowedOrigins = [
-  "https://deploy-mern-frontend-inky.vercel.app",
-];
 
+// Allow all origins (not recommended for production)
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true); // Allow the request
-    } else {
-      console.error(`Blocked by CORS: ${origin}`);
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: "*", // Allow any domain
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true, // Allow cookies and credentials
   optionsSuccessStatus: 200, // For legacy browsers
@@ -39,8 +29,11 @@ const corsOptions = {
 
 // Apply CORS middleware
 app.use(cors(corsOptions));
-// Handle preflight requests
+// Handle preflight requests automatically
 app.options("*", cors(corsOptions));
+
+
+
 
 // Define port
 const PORT = process.env.PORT || 3000;
