@@ -21,6 +21,7 @@ app.use(cookieParser());
 // Define allowed origins
 const allowedOrigins = [
   "https://job-sarthi.vercel.app/", // Update this with your actual frontend URL
+  "http://localhost:5173/"
 ];
 
 // Configure CORS options
