@@ -18,11 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-
 // Define allowed origins
 const allowedOrigins = [
-  "https://deploy-mern-frontend-inky.vercel.app", // Frontend in production
-  "http://localhost:5173", // Frontend in local development
+  "https://job-sarthi.vercel.app/", // Update this with your actual frontend URL
 ];
 
 // Configure CORS options
@@ -41,16 +39,7 @@ const corsOptions = {
 
 // Use CORS middleware
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Handle preflight requests;
-
-;app.use(function (req, res, next) {
-  //Enabling CORS
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,  Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-    next();
-  });
-
+app.options("*", cors(corsOptions)); // Handle preflight requests
 
 // Define port
 const PORT = process.env.PORT || 3000;
