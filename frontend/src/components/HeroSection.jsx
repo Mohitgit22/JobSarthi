@@ -18,9 +18,9 @@ const HeroSection = () => {
     return (
         <div className='text-center'>
             <div className='flex flex-col gap-5 my-10'>
-                <span className=' mx-auto px-4 py-2 rounded-full bg-gray-100 text-[#F83002] font-medium'>No. 1 Job Hunt Website</span>
-                <h1 className='text-5xl font-bold'>Search, Apply & <br /> Get Your <span className='text-[#6A38C2]'>Dream Jobs</span></h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aspernatur temporibus nihil tempora dolor!</p>
+                <span className=' mx-auto px-4 py-2 rounded-full bg-gray-100 text-[#004ba7] font-medium'>Your Ultimate Career Companion</span>
+                <h1 className='text-6xl font-bold'>GO GET IT<br /> Achieve Your <span className='text-[#004ba7]'>Dream Jobs</span></h1>
+                <p>Explore countless opportunities and take the first step towards your dream career!</p>
                 <div className='flex w-[40%] shadow-lg border border-gray-200 pl-3 rounded-full items-center gap-4 mx-auto'>
                     <input
                         type="text"
@@ -29,7 +29,7 @@ const HeroSection = () => {
                         className='outline-none border-none w-full'
 
                     />
-                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#6A38C2]">
+                    <Button onClick={searchJobHandler} className="rounded-r-full bg-[#004ba7]">
                         <Search className='h-5 w-5' />
                     </Button>
                 </div>
