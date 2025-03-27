@@ -32,21 +32,28 @@ JOBSARTHI is a scalable full-stack job portal designed to efficiently connect jo
 
 
 ### Job Details
+
 ![Job Details](https://github.com/Mohitgit22/JobSarthi/blob/8c9ba74d0ce0ff5f3e4c7eab9b8830e7b1fa1192/jobdetail_jobs.png)
 
 ### User Authentication
-![Login Page](https://github.com/Mohitgit22/JobSarthi/blob/8c9ba74d0ce0ff5f3e4c7eab9b8830e7b1fa1192/login_jobs.png)
-![Signup Page](https://github.com/Mohitgit22/JobSarthi/blob/8c9ba74d0ce0ff5f3e4c7eab9b8830e7b1fa1192/signup_jobs.png)
+
+![Signup Page](https://github.com/Mohitgit22/JobSarthi/blob/66f539fdac031e864246e3965406b7b42e01533c/signupjobs.png)
+![Login Page](https://github.com/Mohitgit22/JobSarthi/blob/66f539fdac031e864246e3965406b7b42e01533c/loginjobs.png)
 
 ### Recruiter Dashboard
+
 ![Recruiter Dashboard](https://github.com/Mohitgit22/JobSarthi/blob/8c9ba74d0ce0ff5f3e4c7eab9b8830e7b1fa1192/recruiter_jobs.png)
 ![Company Page](https://github.com/Mohitgit22/JobSarthi/blob/8c9ba74d0ce0ff5f3e4c7eab9b8830e7b1fa1192/company_by_recruiter.png)
 
 ### User Profile Management
+
 ![User Dashboard](https://github.com/Mohitgit22/JobSarthi/blob/8c9ba74d0ce0ff5f3e4c7eab9b8830e7b1fa1192/user_jobs.png)
 ![Update Profile](https://github.com/Mohitgit22/JobSarthi/blob/8c9ba74d0ce0ff5f3e4c7eab9b8830e7b1fa1192/update_profile_jobs.png)
 
+
+
 ## 🛠️ Installation
+
 1. Clone the repository:
    ```sh
    git clone https://github.com/Mohitgit22/JobSarthi.git
